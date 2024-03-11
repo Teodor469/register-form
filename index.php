@@ -17,8 +17,6 @@
     $repeat_password = "";
     $email = "";
 
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') { //_SERVER: Still not understandable
         if(isset($_POST["register"])){ //isset checks if the input box has something in it
             $username = $_POST['username']; // assigning the value submitted through the html
             $password = $_POST['password']; // assigning the value submitted through the html
@@ -50,9 +48,6 @@
         } else {
             echo "Form not submitted correctly.";
         }
-    } else {
-        echo "Form not submitted";
-}
 
 ?>
     <form method="POST" action="index.php">
