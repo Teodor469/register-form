@@ -104,7 +104,7 @@
         mysqli_stmt_execute($check_stmt);
         mysqli_stmt_bind_result($check_stmt, $count);
         mysqli_stmt_fetch($check_stmt);
-        mysqli_stmt_close($check_stmt);
+        mysqli_stmt_close($check_stmt); // until here
 
         if ($count > 0) {
             echo "That username or email is already taken.";
