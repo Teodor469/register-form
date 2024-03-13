@@ -10,6 +10,7 @@
 <?php
 
     include("database.php");
+    include("functions.php");
 
 
     $username = "";
@@ -17,13 +18,25 @@
     $repeat_password = "";
     $email = "";
 
-        if(isset($_POST["register"])){ //isset checks if the input box has something in it
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        //isset checks if the input box has something in it
             $username = $_POST['username']; // assigning the value submitted through the html
             $password = $_POST['password']; // assigning the value submitted through the html
             $repeat_password = $_POST['repeat_password'];
             $email = $_POST['email'];
 
             $errors = [];
+
+            // $errors['username'] = validate_field('username', "You must enter a username!");
+            // $errors['password'] = validate_field('password', "You must enter a password!");
+            // $errors['repeat_password'] = validate_field('repeat_password', "You must repeat you password!");
+
+
+            // if(empty($errors['repeat_password']) && $repeat_password != $password) {
+            //     $errors['repeat_password'] = "The password does not match!";
+            // }
+
+            // $errors['email'] = validate_email($email);
 
             if (empty($username)){
                 $errors['username'] = "You must enter an username!";
@@ -42,7 +55,7 @@
             if (empty($email)) {
                 $errors['email'] = "You must enter an E-mail!";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //checks if the email stored in the variable is not valid
-                $errors['email'] = "Invalid E-mail format!";
+                $errors['email'] = "Invalid E-mail format!"; // This is going to be seperate from the function
             }
             
         } else {
