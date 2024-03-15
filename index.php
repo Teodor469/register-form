@@ -109,6 +109,7 @@
             
             add_user($conn, $username, $password, $email);
             echo "Registration successful!";
+            header("Location: login.php");
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
