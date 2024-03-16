@@ -10,7 +10,7 @@
 <?php
 
     include("database.php");
-    include("functions.php");
+    include("register_logic.php");
 
 
     $username = "";
