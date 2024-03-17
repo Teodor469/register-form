@@ -1,28 +1,43 @@
 <?php
 
-function login_validation($conn, $username, $password)
+function login_username_validation($conn, $username)
 {
-    $sql = "SELECT username, password FROM users WHERE username = ? AND password = ?";
-
-    $fetched_username = "";
-    $fetched_password = "";
-
+    include("database.php");
+    $sql = "SELECT username FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $password);
+    $stmt->bind_param("s", $username);
+
     $stmt->execute();
-    $stmt->bind_result($fetched_username, $fetched_password);
-    $stmt->fetch();
-    $stmt->close();
+    $stmt->bind_result($username_from_db);
+
+    if ($stmt->fetch()) {
+        $stmt->close();
+        return true;
+    } else {
+        $stmt->close();
+        return false;
+    }
+}
 
 
-    try{
-        if(!empty($fetched_username) && password_verify($password, $fetched_password)) {
-            session_start();
+function login_password_validation($conn, $username, $password)
+{
+    include("database.php");
 
-            $_SESSION["username"] = $fetched_username;
-            exit();
-            } 
-    } catch (Exception $e) {
-        $errors[] = "Error: " . $e->getMessage();
+    $sql = "SELECT password FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+
+    $stmt->execute();
+    $stmt->bind_result($hashed_password_from_db);
+
+    if ($stmt->fetch()) {
+        if (password_verify($password, $hashed_password_from_db)) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
     }
 }

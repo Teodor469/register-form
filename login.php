@@ -20,14 +20,20 @@
             $errors[] = "You must enter a username!";
         } elseif(empty($password)) {
             $errors[] = "Can't login without a password!";
-        } try {
-            login_validation($conn, $username, $password);
-            header("Location: welcome.php");
-        } catch (Exception $e) {
-            $errors[] = "Error: " . $e->getMessage();
         }
 
-    }
+        if(!empty($username) && !empty($password)) {
+            $username_validation = login_username_validation($conn, $username);
+            $password_validation = login_password_validation($conn, $username, $password);
+
+            if ($username_validation && $password_validation) {
+                header("Location: welcome.php");
+            } else {
+                $errors[] = 'Username or password is incorrect';
+            }
+        }
+
+}
 
     if (!empty($errors)) {
         foreach ($errors as $error) {
