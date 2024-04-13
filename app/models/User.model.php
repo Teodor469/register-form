@@ -1,5 +1,20 @@
 <?php
 
+require_once('../login-page/DAO/Database_connection.php');
+
+// Instantiate DatabaseConnection class
+$databaseConnection = new DatabaseConnection($config);
+
+// Get the PDO instance
+$pdo = $databaseConnection->getPdo();
+
+// Check if the connection is successful
+if ($pdo) {
+    echo "Connected to the database successfully!";
+} else {
+    echo "Failed to connect to the database.";
+}
+
 
 class User 
 {
