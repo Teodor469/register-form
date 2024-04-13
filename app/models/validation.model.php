@@ -1,22 +1,32 @@
 <?php
+require_once('C:\xampp\htdocs\login-page\DAO\Database_connection.php');
+require_once('C:\xampp\htdocs\login-page\config\db.php');
 
 
 class Validation 
 {
-    protected $db;
+    private $db;
 
-    public function __construct(Database $db)
+    public function __construct(DatabaseConnection $db)
     {
-        $this->db = $db;   
+        $this->db = $db->getPdo();
     }
 
-    public function checkUserExists($username, $email)
+    public function userExists($username, $email)
     {
-        $sql = "SELECT COUNT(*) FROM users WHERE username = :username OR email = :email";
-        $params = [':username' => $username, ':email' => $email];
-        $stmt = $this->db->query($sql, $params);
-        $count = $stmt->fetchColumn();
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username OR email = :email");
+        $stmt->execute([':username' => $username, ':email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $count > 0;
+        return $user !== false;
+    }
+
+    public function registerUser($username, $email, $password)
+    {
+        if ($this->userExists($username, $email)) {
+            throw new Exception("User with the same username or email already exists.");
+        }
+
+        // Continue with the registration process (hashing password, storing user data, etc.)
     }
 }
