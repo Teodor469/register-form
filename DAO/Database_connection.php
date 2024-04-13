@@ -6,9 +6,16 @@ class DatabaseConnection
 
     public function __construct()
     {
-        $config = require_once('./config/db.php');
+        $config = [
+            'host' => 'localhost',
+            'port' => 3306,
+            'dbname' => 'registration',
+            'username' => 'root',
+            'password' => '',
+        ];
+        // $config = require_once('C:\xampp\htdocs\login-page\config\db.php');
 
-        $dsn = "mysql:host={$config['host']}port={$config['port']};dbname={$config['dbname']}";
+        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
 
         try {
             $this->pdo = new PDO($dsn, $config['username'], $config['password']);
