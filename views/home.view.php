@@ -10,7 +10,7 @@ class UserView
         echo "<p style='color: green;'>$message</p>";
     }
 
-    public function showError($message) 
+    public function showError($message)
     {
         echo "<p style='color: red;'>$message</p>";
     }

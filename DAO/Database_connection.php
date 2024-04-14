@@ -13,7 +13,6 @@ class DatabaseConnection
             'username' => 'root',
             'password' => '',
         ];
-        // $config = require_once('C:\xampp\htdocs\login-page\config\db.php');
 
         $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
 
