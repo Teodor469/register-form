@@ -16,20 +16,17 @@ class UserView
     }
 }
 
-// Create instances of our classes
 $db = new DatabaseConnection();
 $model = new Validation($db);
 $view = new UserView();
 $controller = new Register($model, $view);
 
-// Assume we're getting form data from a registration form
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 }
 
-// Handle the registration
 $controller->register($username, $email, $password);
 ?>
 
