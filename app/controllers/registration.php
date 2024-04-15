@@ -16,6 +16,7 @@ class Register
         try {
             $this->model->registerUser($username, $email, $password);
             $this->view->showSuccess("Registration successful!");
+            header("Location: ../views/login.view.php");
         } catch (Exception $e) {
             $this->view->showError($e->getMessage());
         }
