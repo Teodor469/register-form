@@ -33,7 +33,8 @@ class LoginValidation
         $stmt = $this->db->prepare("SELECT password FROM users WHERE username = :username");
         $stmt->execute([':username' => $username]);
         $hash = $stmt->fetch(PDO::FETCH_ASSOC)['password'];
-        return password_verify($password, $hash);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        return password_verify($hashed_password, $hash);
     }
 
 
