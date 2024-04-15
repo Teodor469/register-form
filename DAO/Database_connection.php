@@ -6,7 +6,7 @@ class DatabaseConnection
 
     public function __construct()
     {
-        $config = [
+        $config = [ // Of my understanding this part should not be here, but I couldn't make it work otherwise
             'host' => 'localhost',
             'port' => 3306,
             'dbname' => 'registration',
