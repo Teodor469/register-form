@@ -3,7 +3,7 @@ require_once('C:\xampp\htdocs\login-page\DAO\Database_connection.php');
 require_once('C:\xampp\htdocs\login-page\app\models\Validation.model.php');
 require_once('C:\xampp\htdocs\login-page\app\controllers\Registration.php');
 
-class UserView
+class RegisterView
 {
     public function showSuccess($message)
     {
@@ -18,7 +18,7 @@ class UserView
 
 $db = new DatabaseConnection();
 $model = new Validation($db);
-$view = new UserView();
+$view = new RegisterView();
 $controller = new Register($model, $view);
 
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {

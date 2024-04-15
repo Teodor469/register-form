@@ -5,7 +5,7 @@ class Register
     private $model;
     private $view;
 
-    public function __construct(Validation $model, UserView $view)
+    public function __construct(Validation $model, RegisterView $view)
     {
         $this->model = $model;
         $this->view = $view;
