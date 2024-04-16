@@ -8,7 +8,7 @@ class LoginView
     public function showSuccess($message)
     {
         echo "<p style='color: green;'>$message</p>";
-        // header("Location: home.view.php");
+        header("Location: home.view.php");
     }
 
     public function showError($message)
@@ -17,24 +17,23 @@ class LoginView
     }
 }
 
-$db = new DatabaseConnection();
-$model = new LoginValidation($db);
+// Create instances of model and view
+$model = new LoginValidation(new DatabaseConnection());
 $view = new LoginView();
-$controller = new Login($model, $view);
 
-$email = '';
-$password = '';
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Extract email and password from form
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    // Call controller method to process login
+    $controller = new Login($model, $view);
+    $controller->login($email, $password);
 }
-
-$controller->login($email, $password);
-
-// NOTE: Must seperate the php and the html files for more seemsless look
-// Also must create a seperate partition file to hold the repeatable logic used in the project
 ?>
+<!-- // NOTE: Must seperate the php and the html files for more seemsless look
+// Also must create a seperate partition file to hold the repeatable logic used in the project -->
 
 
 <!DOCTYPE html>
@@ -63,9 +62,9 @@ $controller->login($email, $password);
             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Submit</button>
         </form>
     </div>
-    <?php var_dump($_POST);
+    <!-- <?php var_dump($_POST);
     var_dump($db->isConnected());
-    ?>
+    ?> -->
 </body>
 
 </html>
