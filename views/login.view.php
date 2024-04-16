@@ -8,6 +8,7 @@ class LoginView
     public function showSuccess($message)
     {
         echo "<p style='color: green;'>$message</p>";
+        // header("Location: home.view.php");
     }
 
     public function showError($message)
@@ -23,14 +24,16 @@ $controller = new Login($model, $view);
 
 $email = '';
 $password = '';
-$username = '';
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 }
 
-$controller->login($email, $password, $username);
+$controller->login($email, $password);
+
+// NOTE: Must seperate the php and the html files for more seemsless look
+// Also must create a seperate partition file to hold the repeatable logic used in the project
 ?>
 
 
@@ -60,6 +63,9 @@ $controller->login($email, $password, $username);
             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Submit</button>
         </form>
     </div>
+    <?php var_dump($_POST);
+    var_dump($db->isConnected());
+    ?>
 </body>
 
 </html>

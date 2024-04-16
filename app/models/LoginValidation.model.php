@@ -28,18 +28,18 @@ class LoginValidation
      * @param string $psswd
      * @param string $username
      */
-    public function psswdExists($password, $username)
+    public function psswdExists($password, $email)
     {
-        $stmt = $this->db->prepare("SELECT password FROM users WHERE username = :username");
-        $stmt->execute([':username' => $username]);
+        $stmt = $this->db->prepare("SELECT password FROM users WHERE email = :email");
+        $stmt->execute([':email' => $email]);
         $hash = $stmt->fetch(PDO::FETCH_ASSOC)['password'];
         return password_verify($password, $hash);
     }
 
 
-    public function loginUser($email, $password, $username)
+    public function loginUser($email, $password)
     {
-        if ($this->emailExists($email) and $this->psswdExists($password, $username)) {
+        if ($this->emailExists($email) && $this->psswdExists($password, $email)) {
             return true;
         } else {
             return false;

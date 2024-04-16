@@ -28,6 +28,9 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
 }
 
 $controller->register($username, $email, $password);
+
+// NOTE: Must seperate the php and the html files for more seemsless look
+// Also must create a seperate partition file to hold the repeatable logic used in the project
 ?>
 
 
