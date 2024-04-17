@@ -16,19 +16,15 @@ class LoginView
         echo "<p style='color: red;'>$message</p>";
     }
 }
-
-// Create instances of model and view
-$model = new LoginValidation(new DatabaseConnection());
+$db = new DatabaseConnection();
+$model = new LoginValidation($db);
 $view = new LoginView();
+$controller = new Login($model, $view);
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Extract email and password from form
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // This avoids the extra need for a hidden input field NOTE may change it later.
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Call controller method to process login
-    $controller = new Login($model, $view);
     $controller->login($email, $password);
 }
 ?>
