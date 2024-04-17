@@ -39,5 +39,7 @@ $controller->register($username, $email, $password);
 
 
 <?php
-    require_once(__DIR__ . '/partitions/register.html');
+// require_once(__DIR__ . '/helper_functions.php');
+require_once(__DIR__ . '/partitions/register.html');
+echo __DIR__ . '/helper_functions.php';
 ?>
