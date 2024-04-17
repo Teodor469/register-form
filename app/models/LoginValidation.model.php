@@ -46,3 +46,5 @@ class LoginValidation
         }
     }
 }
+
+// NOTE need better error handling for the login form
