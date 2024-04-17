@@ -39,7 +39,22 @@ $controller->register($username, $email, $password);
 
 
 <?php
-// require_once(__DIR__ . '/helper_functions.php');
+require 'C:\xampp\htdocs\login-page\helper_functions.php';
 require_once(__DIR__ . '/partitions/register.html');
-echo __DIR__ . '/helper_functions.php';
+// require basePath("partitions/register.html");
+$path = basePath("partitions/register.html");
+
+if (file_exists($path)) {
+    echo "File exists!";
+} else {
+    echo "File does not exist: " . $path;
+}
+
+if (is_readable($path)) {
+    echo "File is readable!";
+} else {
+    echo "File is not readable: " . $path;
+}
 ?>
+
+<!-- FILE DOES NOT EXIST MUST FIX -->
