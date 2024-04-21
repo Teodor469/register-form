@@ -9,11 +9,18 @@ class LoginView
     {
         echo "<p style='color: green;'>$message</p>";
         header("Location: home.view.php");
+        exit();
     }
 
     public function showError($message)
     {
         echo "<p style='color: red;'>$message</p>";
+    }
+
+    public function forgotPassword()
+    {
+        header("Location: forgot_password.view.php");
+        exit();
     }
 }
 $db = new DatabaseConnection();
@@ -26,6 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // This avoids the extra need for a 
     $password = $_POST["password"];
 
     $controller->login($email, $password);
+}
+
+
+if (isset($_GET['action']) && $_GET['action'] === 'forgot') {
+    $view->forgotPassword();
+    // No need for further code execution after redirection
+    exit();
 }
 ?>
 <!-- // NOTE: Must seperate the php and the html files for more seemsless look
