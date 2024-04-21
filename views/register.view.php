@@ -39,23 +39,31 @@ $controller->register($username, $email, $password);
 
 
 <?php
-require 'C:\xampp\htdocs\login-page\helper_functions.php';
+// require_once(dirname(getcwd()) . '/helper_functions.php');
 require_once(__DIR__ . '/partitions/register.html');
 // require basePath("xampp\htdocs\login-page\views\partitions\register.html"); // NOTE: Fix the helper function basepath
 // If the function exists in this current file it works, otherwise it does not
-$path = basePath("partitions/register.html");
+// $path = basePath("partitions/register.html");
 
-if (file_exists($path)) {
-    echo "File exists!";
-} else {
-    echo "File does not exist: " . $path;
-}
+// if (file_exists($path)) {
+//     echo "File exists!";
+// } else {
+//     echo "File does not exist: " . $path;
+// }
 
-if (is_readable($path)) {
-    echo "File is readable!";
-} else {
-    echo "File is not readable: " . $path;
-}
-?>
+// if (is_readable($path)) {
+//     echo "File is readable!";
+// } else {
+//     echo "File is not readable: " . $path;
+// }
+
+// echo "<br>";
+
+// if (file_exists("../helper_functions.php")) {
+//     echo "1";
+// } else {
+//     echo "0";
+// }
+// ?>
 
 <!-- FILE DOES NOT EXIST MUST FIX -->
