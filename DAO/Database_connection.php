@@ -1,5 +1,4 @@
 <?php
-require_once('../DAO/Database_connection.php');
 
 class DatabaseConnection
 {
