@@ -24,7 +24,7 @@ class LoginView
     }
 }
 $db = new DatabaseConnection();
-$model = new LoginValidation($db);
+$model = new LoginValidation($db); //The view should not interact with the model
 $view = new LoginView();
 $controller = new Login($model, $view);
 

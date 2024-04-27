@@ -10,7 +10,7 @@ class LoginValidation
     }
 
     /**
-     * This method is going to validate if the provided email matches the email fetched from the db
+     * This method is going to check if the provided email exists
      * 
      * @param string $email
      */
@@ -23,7 +23,7 @@ class LoginValidation
     }
 
     /**
-     * This method is going to validated if the provided psswd matches the psswd fetched from the db
+     * This method is going to check if the password exists
      * 
      * @param string $psswd
      * @param string $username
