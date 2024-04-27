@@ -34,5 +34,10 @@ class Router {
     {
         $this->registerRoute('POST', $uri, $controller);
     }
+
+    public function route($requestUri, $requestMethod)
+    {
+        //match the current request uri with the registered routes in my application
+    }
     
 }
