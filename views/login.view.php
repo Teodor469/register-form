@@ -38,14 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // This avoids the extra need for a 
 
 if (isset($_GET['action']) && $_GET['action'] === 'forgot') {
     $view->forgotPassword();
-    // No need for further code execution after redirection
     exit();
 }
 ?>
-<!-- // NOTE: Must seperate the php and the html files for more seemsless look
-// Also must create a seperate partition file to hold the repeatable logic used in the project -->
-
-
 
 <?php
     require_once(__DIR__ . '/partitions/login.html');
