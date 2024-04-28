@@ -23,5 +23,6 @@ class Login
         } catch (Exception $e) {
             $this->view->showError("An error occurred: " . $e->getMessage());
         }
+        loadView('login');
     }
 }

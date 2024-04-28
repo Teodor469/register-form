@@ -19,7 +19,7 @@
                 <a href="#" class="text-gray-300 hover:text-white">Upload Videos</a>
                 <a href="#" class="text-gray-300 hover:text-white">Settings</a>
                 <a href="#" class="text-gray-300 hover:text-white">About</a>
-                <a href="#" class="font-semibold text-gray-300 hover:text-white">Sign in</a>
+                <a href="register.view.php" class="font-semibold text-gray-300 hover:text-white">Sign in</a>
             </div>
         </div>
     </nav>

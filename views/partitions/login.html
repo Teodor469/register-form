@@ -11,14 +11,14 @@
 <body class="bg-gray-100">
     <div class="container mx-auto mt-8">
         <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
-        <form action="#" method="post" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+        <form action="/login-page/public/index.php/views/login" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
             <div class="mb-4">
                 <label for="email" class="block text-sm font-semibold mb-2">Email</label>
-                <input type="email" method="post" id="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+                <input type="email" method="POST" id="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-sm font-semibold mb-2">Password</label>
-                <input type="password" method="post" id="password" name="password" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+                <input type="password" method="POST" id="password" name="password" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
             <div class="text-center mt-4">
                 <a href="forgot_password.view.php?action=forgot" class="text-sm text-blue-500 hover:underline">Forgot password?</a>

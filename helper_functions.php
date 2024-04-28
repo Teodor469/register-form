@@ -28,10 +28,10 @@ function loadView($view)
  * @param mixed $value
  * @return void
  */
-function inspect($value)
+function inspectAndDie($value)
 {
     echo "<pre>";
-    var_dump($value);
+    die(var_dump($value));
     echo "</pre>";
 }
 
